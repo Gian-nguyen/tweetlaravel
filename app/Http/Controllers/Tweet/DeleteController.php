@@ -18,6 +18,7 @@ class DeleteController extends Controller
         }
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
         $tweet->delete();
+        $tweetService->deleteTweet($tweetId);
         return redirect()
             ->route('tweet.index')
             ->with('feedback.success', "つぶやきを削除しました");
